@@ -27,55 +27,55 @@ export default function HomeScreen() {
       </ThemedView>
       <ThemedView style={styles.elementsContainer}>
         <TouchableOpacity onPress={() => handleElementClick(1)}>
-          <Text>Desktop - 1 Curiosity Point</Text>
+          <Text style={{ color: 'white' }}>Desktop - 1 Curiosity Point</Text>
         </TouchableOpacity>
         {curiosityPoints >= 16 && (
           <TouchableOpacity onPress={() => handleElementClick(2)}>
-            <Text>Write - 2 Curiosity Points</Text>
+            <Text style={{ color: 'white' }}>Write - 2 Curiosity Points</Text>
           </TouchableOpacity>
         )}
         {curiosityPoints >= 30 && (
           <TouchableOpacity onPress={() => handleElementClick(3)}>
-            <Text>Calculator - 3 Curiosity Points</Text>
+            <Text style={{ color: 'white' }}>Calculator - 3 Curiosity Points</Text>
           </TouchableOpacity>
         )}
         {curiosityPoints >= 50 && (
           <TouchableOpacity onPress={() => handleElementClick(5)}>
-            <Text>System Settings - 5 Curiosity Points</Text>
+            <Text style={{ color: 'white' }}>System Settings - 5 Curiosity Points</Text>
           </TouchableOpacity>
         )}
         {curiosityPoints >= 80 && (
           <TouchableOpacity onPress={() => handleElementClick(8)}>
-            <Text>GW Basic - 8 Curiosity Points</Text>
+            <Text style={{ color: 'white' }}>GW Basic - 8 Curiosity Points</Text>
           </TouchableOpacity>
         )}
         {curiosityPoints >= 120 && (
           <TouchableOpacity onPress={() => handleElementClick(10)}>
-            <Text>Turbo Pascal - 10 Curiosity Points</Text>
+            <Text style={{ color: 'white' }}>Turbo Pascal - 10 Curiosity Points</Text>
           </TouchableOpacity>
         )}
         {curiosityPoints >= 40 && (
           <TouchableOpacity onPress={() => handleElementClick(2)}>
-            <Text>Paint - 2 Curiosity Points</Text>
+            <Text style={{ color: 'white' }}>Paint - 2 Curiosity Points</Text>
           </TouchableOpacity>
         )}
         {curiosityPoints >= 60 && (
           <TouchableOpacity onPress={() => handleElementClick(4)}>
-            <Text>Notepad - 4 Curiosity Points</Text>
+            <Text style={{ color: 'white' }}>Notepad - 4 Curiosity Points</Text>
           </TouchableOpacity>
         )}
         {curiosityPoints >= 100 && (
           <TouchableOpacity onPress={() => handleElementClick(6)}>
-            <Text>Games Folder - 6 Curiosity Points</Text>
+            <Text style={{ color: 'white' }}>Games Folder - 6 Curiosity Points</Text>
           </TouchableOpacity>
         )}
         {curiosityPoints >= 150 && (
           <TouchableOpacity onPress={() => handleElementClick(12)}>
-            <Text>Internet Explorer - 12 Curiosity Points</Text>
+            <Text style={{ color: 'white' }}>Internet Explorer - 12 Curiosity Points</Text>
           </TouchableOpacity>
         )}
         <TouchableOpacity onPress={handleRecycleBinClick} disabled={recycleBinCooldown}>
-          <Text>Recycle Bin - 1 Curiosity Point {recycleBinCooldown && '(Cooldown)'}</Text>
+          <Text style={{ color: 'white' }}>Recycle Bin - 1 Curiosity Point {recycleBinCooldown && '(Cooldown)'}</Text>
         </TouchableOpacity>
       </ThemedView>
     </ScrollView>
@@ -94,6 +94,7 @@ const styles = StyleSheet.create({
   elementsContainer: {
     gap: 8,
     marginBottom: 8,
+    backgroundColor: 'black',
   },
   reactLogo: {
     height: 178,
