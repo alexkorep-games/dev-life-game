@@ -1,11 +1,26 @@
-import { Image, StyleSheet, Platform } from 'react-native';
+import { Image, StyleSheet, Platform, TouchableOpacity, View, Text } from 'react-native';
+import { useState, useEffect } from 'react';
 
-import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 
 export default function HomeScreen() {
+  const [curiosityPoints, setCuriosityPoints] = useState(0);
+  const [recycleBinCooldown, setRecycleBinCooldown] = useState(false);
+
+  const handleElementClick = (points) => {
+    setCuriosityPoints(curiosityPoints + points);
+  };
+
+  const handleRecycleBinClick = () => {
+    if (!recycleBinCooldown) {
+      setCuriosityPoints(curiosityPoints + 1);
+      setRecycleBinCooldown(true);
+      setTimeout(() => setRecycleBinCooldown(false), 5000);
+    }
+  };
+
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
@@ -17,34 +32,62 @@ export default function HomeScreen() {
       }>
       <ThemedView style={styles.titleContainer}>
         <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
       </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({ ios: 'cmd + d', android: 'cmd + m' })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
+      <ThemedView style={styles.illustrationContainer}>
+        <Image source={require('@/assets/images/level1.png')} style={styles.illustration} />
       </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
+      <ThemedView style={styles.elementsContainer}>
+        <TouchableOpacity onPress={() => handleElementClick(1)}>
+          <Text>Desktop - 1 Curiosity Point</Text>
+        </TouchableOpacity>
+        {curiosityPoints >= 16 && (
+          <TouchableOpacity onPress={() => handleElementClick(2)}>
+            <Text>Write - 2 Curiosity Points</Text>
+          </TouchableOpacity>
+        )}
+        {curiosityPoints >= 30 && (
+          <TouchableOpacity onPress={() => handleElementClick(3)}>
+            <Text>Calculator - 3 Curiosity Points</Text>
+          </TouchableOpacity>
+        )}
+        {curiosityPoints >= 50 && (
+          <TouchableOpacity onPress={() => handleElementClick(5)}>
+            <Text>System Settings - 5 Curiosity Points</Text>
+          </TouchableOpacity>
+        )}
+        {curiosityPoints >= 80 && (
+          <TouchableOpacity onPress={() => handleElementClick(8)}>
+            <Text>GW Basic - 8 Curiosity Points</Text>
+          </TouchableOpacity>
+        )}
+        {curiosityPoints >= 120 && (
+          <TouchableOpacity onPress={() => handleElementClick(10)}>
+            <Text>Turbo Pascal - 10 Curiosity Points</Text>
+          </TouchableOpacity>
+        )}
+        {curiosityPoints >= 40 && (
+          <TouchableOpacity onPress={() => handleElementClick(2)}>
+            <Text>Paint - 2 Curiosity Points</Text>
+          </TouchableOpacity>
+        )}
+        {curiosityPoints >= 60 && (
+          <TouchableOpacity onPress={() => handleElementClick(4)}>
+            <Text>Notepad - 4 Curiosity Points</Text>
+          </TouchableOpacity>
+        )}
+        {curiosityPoints >= 100 && (
+          <TouchableOpacity onPress={() => handleElementClick(6)}>
+            <Text>Games Folder - 6 Curiosity Points</Text>
+          </TouchableOpacity>
+        )}
+        {curiosityPoints >= 150 && (
+          <TouchableOpacity onPress={() => handleElementClick(12)}>
+            <Text>Internet Explorer - 12 Curiosity Points</Text>
+          </TouchableOpacity>
+        )}
+        <TouchableOpacity onPress={handleRecycleBinClick} disabled={recycleBinCooldown}>
+          <Text>Recycle Bin - 1 Curiosity Point {recycleBinCooldown && '(Cooldown)'}</Text>
+        </TouchableOpacity>
       </ThemedView>
     </ParallaxScrollView>
   );
@@ -56,7 +99,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: 8,
   },
-  stepContainer: {
+  illustrationContainer: {
+    alignItems: 'center',
+    marginVertical: 20,
+  },
+  illustration: {
+    width: 200,
+    height: 200,
+  },
+  elementsContainer: {
     gap: 8,
     marginBottom: 8,
   },
