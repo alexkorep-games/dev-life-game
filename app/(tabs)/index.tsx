@@ -30,9 +30,6 @@ export default function HomeScreen() {
           style={styles.reactLogo}
         />
       }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-      </ThemedView>
       <ThemedView style={styles.illustrationContainer}>
         <Image source={require('@/assets/images/level1.png')} style={styles.illustration} />
       </ThemedView>
@@ -94,11 +91,6 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
   illustrationContainer: {
     alignItems: 'center',
     marginVertical: 20,
