@@ -1,7 +1,6 @@
-import { Image, StyleSheet, Platform, TouchableOpacity, View, Text } from 'react-native';
+import { Image, StyleSheet, Platform, TouchableOpacity, View, Text, ScrollView } from 'react-native';
 import { useState, useEffect } from 'react';
 
-import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 
@@ -22,14 +21,7 @@ export default function HomeScreen() {
   };
 
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
+    <ScrollView>
       <ThemedView style={styles.illustrationContainer}>
         <Image source={require('@/assets/images/level1.png')} style={styles.illustration} />
       </ThemedView>
@@ -86,7 +78,7 @@ export default function HomeScreen() {
           <Text>Recycle Bin - 1 Curiosity Point {recycleBinCooldown && '(Cooldown)'}</Text>
         </TouchableOpacity>
       </ThemedView>
-    </ParallaxScrollView>
+    </ScrollView>
   );
 }
 
