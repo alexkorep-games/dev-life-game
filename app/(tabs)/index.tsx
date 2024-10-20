@@ -34,7 +34,7 @@ export default function HomeScreen() {
         <ThemedText type="title">Welcome!</ThemedText>
       </ThemedView>
       <ThemedView style={styles.illustrationContainer}>
-        <Image source={require('@/assets/images/illustration.png')} style={styles.illustration} />
+        <Image source={require('@/assets/images/level1.png')} style={styles.illustration} />
       </ThemedView>
       <ThemedView style={styles.elementsContainer}>
         <TouchableOpacity onPress={() => handleElementClick(1)}>
